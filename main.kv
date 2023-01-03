@@ -1,0 +1,62 @@
+<TooltipMDIconButton@MDIconButton+MDTooltip>
+
+MDScreen:
+    id: screen
+    
+    MDTextField:
+        id: txt_input
+        hint_text: 'Youtube Video Link'
+        font_size: '12dp'
+        pos_hint: {"center_x": .5, "center_y": .33}
+        size_hint_x: .7
+        icon_left: 'link-variant'
+        
+    TooltipMDIconButton:
+        icon: 'trash-can-outline'
+        tooltip_text: 'clear text field'
+        on_release: txt_input.text = ''
+
+    MDFillRoundFlatIconButton:
+        pos_hint: {'center_x': .5, 'center_y': .2}
+        size_hint_x: .5
+        on_release:
+            app.verify()
+            app.verify()
+            if title.text != '': thumbnail.color = 1,1,1,1 
+                 
+        icon: 'autorenew'
+        text: 'to convert'
+        rounded_button: True
+        background_normal: True
+        md_bg_color: app.theme_cls.primary_color
+    
+    MDFillRoundFlatIconButton:
+        id: download_button
+        pos_hint: {'center_x': .5, 'center_y': .12}
+        size_hint_x: .5
+        on_release:
+            app.yd.download() if app.valid == True else app.show_dialog('invalid text')
+            txt_input.text = ''
+            app.show_dialog('downloaded')      
+        icon: 'download'
+        text: 'Download'
+        rounded_button: True
+        background_normal: True
+        md_bg_color: [0, 1, 1, 1]
+        
+    MDBoxLayout:
+        AsyncImage:
+            id: thumbnail
+            pos_hint: {'center_y': .7, 'center_x': .5}
+            size_hint: [1.9, 0.5]
+            source: ''
+            bold: True
+            color: 0,0,0,0
+            
+    MDLabel:
+        id: title
+        font_size: '15dp'
+        text: ''
+        bold: True
+        line_height: 2
+        pos_hint: {'center_y': .41, 'center_x': .75}
