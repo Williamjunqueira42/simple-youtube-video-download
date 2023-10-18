@@ -1,10 +1,10 @@
 #  William Dos Santos Junqueira
 #  Youtube video download using KivyMd and Pytube
-
+'''
 from kivy.config import Config
 Config.set('graphics', 'width', '800')
 Config.set('graphics', 'height', '600')
-Config.set('graphics', 'resizable', False)
+Config.set('graphics', 'resizable', False)'''
 
 import os
 from kivymd.app import MDApp
